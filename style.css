@@ -1,0 +1,16 @@
+body{
+
+    margin: 0px;
+}
+canvas{
+    background-color: white;
+}
+/*#ball{
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    position: fixed;
+    left: 10px;
+    top: 30px;
+}*/

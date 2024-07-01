@@ -1,0 +1,86 @@
+//let canvas = document.querySelector('canvas');
+//canvas.width = window.innerWidth
+//canvas.height = window.innerHeight
+//let c = canvas.getContext('2d') //object misazad
+
+//c.font = '30px verdana'
+//c.fillText('Hello word', 10, 55)
+
+//c.translate(100, 100)           //marcaz ra taghiir midahad
+//c.fillStyle = '#27ac60'         //rand ra avaz konim
+//c.fillRect(100, 0, 100, 100)    //mostatil misazad
+//c.fillStyle = '#3498db'
+//c.fillRect(300, 100, 100, 100)
+//c.fillStyle = '#8e44ad'
+//c.fillRect(500, 0, 100, 100)
+
+
+//c.beginPath()   //rasm jadid
+//c.lineTo(50, 300) //noghat
+//c.lineTo(300, 100)
+//c.lineTo(400, 300)
+//c.closePath()     //noghte akhar ra be aval vasl mikonad
+//c.strokeStyle = '#8e44ad' //style va rang
+//c.stroke()        //rasm khat
+//c.fillStyle = '#8e44ad'
+//c.fill()        //topor mikonad
+//c.beginPath()
+//c.lineTo(600, 200)
+//c.lineTo(800, 300)
+//c.stroke()
+
+
+
+//for (i = 0; i < 100; i++) {
+//  x = Math.random() * window.innerWidth
+//y = Math.random() * window.innerHeight
+//c.beginPath()
+//c.arc(x, y, 50, 0, 2 * Math.PI)
+//c.fillStyle = 'red'
+//c.stroke()
+//}
+//c.clearRect(0, 0, window.innerWidth, window.innerHeight) //pak kardan mostatili
+
+//let ball = document.querySelector('#ball')
+//let offset = 10;
+//setInterval(() => {
+//    ball.style.left = offset + ' px'
+//    offset += 1
+//}, 10)
+
+//function animate() {
+//  ball.style.left = offset + 'px'
+//offset += 1
+//requestAnimationFrame(animate)
+//}
+//animate()
+
+let canvas = document.querySelector('canvas')
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+let c = canvas.getContext('2d')
+let r = 40;
+let x = randomInFromInterval(0 + r, window.innerWidth - r)
+let y = randomInFromInterval(0 + r, window.innerHeight - r)
+let vx = (Math.random() - 0.5) * 4
+let vy = (Math.random() - 0.5) * 4
+function animate() {
+    c.clearRect(0, 0, window.innerWidth, window.innerHeight)
+    c.beginPath()
+    c.arc(x, y, r, 0, 2 * Math.PI)
+    c.fillStyle = 'red'
+    c.fill()
+    if (x + r > window.innerWidth || x - r < 0) {
+        vx = -vx
+    }
+    if (y - r < 0 || y + r > window.innerHeight) {
+        vy = -vy
+    }
+    x += vx
+    y += vy
+    requestAnimationFrame(animate)
+}
+animate()
+function randomInFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
